@@ -52,7 +52,7 @@ def get_counts_vect(sp_list, dict_):
                 if base.upper() == 'C':
                     ans[2]+=1/variants
                 if base.upper() == 'G':
-                    ans[0]+=1/variants
+                    ans[3]+=1/variants
     return ans
 
 """
@@ -85,10 +85,18 @@ def character(df, file):
     AR_in_inno = (a&b)
     
     lists = file_name.split('_')
-    s = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(lists[2]+'_'+lists[3], lists[4], lists[5].split('.')[0], lists[0]+lists[1],
+    s = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(lists[2]+'_'+lists[3], 
+    lists[4], 
+    lists[5], 
+    lists[0]+'_'+lists[1],
     AR_in_inno, 
     AR_in_noninno,
-    cons)
+    cons,
+    lists[6].split('.')[0],
+    len(strings),
+    ','.join([str(i) for i in df[df['Innovative'] >0].index.tolist()]),
+    ','.join([str(i) for i in df[df['Not_innovative'] >0].index.tolist()])
+    )
     
     print(s)
     
