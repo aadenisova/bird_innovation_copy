@@ -77,11 +77,11 @@ def character(df, file):
     cons = (a&b)
     
     a = (df['Innovative'].max() < 1) & (df['Not_innovative'].max() == 1) 
-    b = df['Innovative'].iloc[df['Not_innovative'].argmax()].sum()==0
+    b = (df['Innovative'].argmax() != df['Not_innovative'].argmax())
     AR_in_noninno = (a&b)
     
     a = (df['Innovative'].max() == 1) & (df['Not_innovative'].max() < 1) 
-    b = df['Not_innovative'].iloc[df['Innovative'].argmax()].sum()==0
+    b = (df['Innovative'].argmax() != df['Not_innovative'].argmax())
     AR_in_inno = (a&b)
     
     lists = file_name.split('_')
