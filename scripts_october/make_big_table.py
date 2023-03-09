@@ -15,7 +15,7 @@ df_alln_all = []
 
 li = ['chrom\ttwo_evolved\ttwo_all\tinno_evolved\tinno_all\tnoninno_evolved\tnoninno_all']
 for i in chr_names['chrom'][:36]:
-    df_all_ = pd.read_csv('maf_counts/{}.maf.csv'.format(i))
+    df_all_ = pd.read_csv('maf_counts2/{}.maf.csv'.format(i))
     df_all_['chrom'] = i
 
     df_allt = df_all_[(df_all_[cons_in_table[0]]==True) & (df_all_['n']>=6)]
@@ -43,8 +43,8 @@ f = open('number_of_nucl.tsv', 'w')
 f.write('\n'.join(li))
 f.close()
 
-pd.concat(df_allt_all).to_csv('{}.tsv'.format(cons_type[0]), sep = '\t')
-pd.concat(df_alli_all).to_csv('{}.tsv'.format(cons_type[1]), sep = '\t')
-pd.concat(df_alln_all).to_csv('{}.tsv'.format(cons_type[2]), sep = '\t')
+pd.concat(df_allt_all).to_csv('{}2.tsv'.format(cons_type[0]), sep = '\t')
+pd.concat(df_alli_all).to_csv('{}2.tsv'.format(cons_type[1]), sep = '\t')
+pd.concat(df_alln_all).to_csv('{}2.tsv'.format(cons_type[2]), sep = '\t')
 
 
